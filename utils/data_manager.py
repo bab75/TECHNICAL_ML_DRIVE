@@ -157,8 +157,8 @@ class DataManager:
         
         # Forward fill any missing values (common for volume on weekends)
          #data = data.fillna(method='ffill')
-          data = data.ffill()
-          return data
+         data = data.ffill()
+         return data
 
 
          
