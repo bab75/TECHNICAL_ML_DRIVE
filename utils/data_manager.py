@@ -165,27 +165,27 @@ class DataManager:
                 st.warning(f"Missing column: {col}")
                 return pd.DataFrame()
     
-    # Basic data validation
-    if len(data) < 2:
-        st.warning("Insufficient data points")
-        return pd.DataFrame()
-    
-    # Check for data integrity
-    invalid_rows = (
-        (data['High'] < data['Low']) |
-        (data['High'] < data['Open']) |
-        (data['High'] < data['Close']) |
-        (data['Low'] > data['Open']) |
-        (data['Low'] > data['Close']) |
-        (data['Volume'] < 0)
-    )
-    
-    if invalid_rows.any():
-        st.warning(f"Found {invalid_rows.sum()} rows with invalid data. Cleaning...")
-        data = data[~invalid_rows]
-    
-    return data        
-       
+        # Basic data validation
+        if len(data) < 2:
+            st.warning("Insufficient data points")
+            return pd.DataFrame()
+        
+        # Check for data integrity
+        invalid_rows = (
+            (data['High'] < data['Low']) |
+            (data['High'] < data['Open']) |
+            (data['High'] < data['Close']) |
+            (data['Low'] > data['Open']) |
+            (data['Low'] > data['Close']) |
+            (data['Volume'] < 0)
+        )
+        
+        if invalid_rows.any():
+            st.warning(f"Found {invalid_rows.sum()} rows with invalid data. Cleaning...")
+            data = data[~invalid_rows]
+        
+        return data        
+           
     
     def get_multiple_stocks(self, symbols, period='1y', interval='1d'):
         """
