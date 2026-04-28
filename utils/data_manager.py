@@ -156,8 +156,8 @@ class DataManager:
         data = data.dropna(how='all')
         
         # Forward fill any missing values (common for volume on weekends)
-        #data = data.fillna(method='ffill')
-         data = data.ffill()
+         data = data.fillna(method='ffill')
+         
         
         # Ensure all required columns exist
         required_columns = ['Open', 'High', 'Low', 'Close', 'Volume']
